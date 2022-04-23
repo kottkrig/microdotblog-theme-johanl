@@ -1,0 +1,104 @@
+/* TailwindCSS base styles */
+/* see https://tailwindcss.com/docs/functions-and-directives#tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer base {
+  body {
+    font-size: 18px;
+  }
+
+  :not(nav) ul {
+    @apply list-circle pl-6 my-2;
+  }
+
+  article ol {
+    counter-reset: ol-counter;
+    @apply list-none pl-8;
+  }
+
+  article ol li::before {
+    content: counter(ol-counter);
+    left: -2rem;
+    top: 0.2rem;
+    @apply text-sm border border-solid rounded-full border-black w-5 h-5 p-1 flex items-center justify-center absolute;
+  }
+
+  article ol li {
+    counter-increment: ol-counter;
+    @apply my-3 relative;
+  }
+
+  :not(nav) ul li {
+    @apply my-5;
+  }
+
+  article p {
+    @apply my-3;
+  }
+
+  article h2 {
+    @apply mt-5;
+  }
+
+  article h2 + p {
+    @apply mt-1;
+  }
+
+  article blockquote {
+    @apply text-sm mx-5;
+  }
+
+  article a::after {
+    content: "°";
+    @apply inline text-red-800 relative;
+    top: -2px;
+    margin-left: 1.5px;
+  }
+
+  a:hover {
+    @apply bg-red-100 rounded-sm;
+  }
+
+  article figure {
+    @apply my-5;
+  }
+
+  article figcaption {
+    @apply text-center text-sm block mt-1;
+  }
+
+  h2 {
+    @apply text-lg font-bold;
+  }
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/charter_regular-webfont.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/charter_bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/charter_italic-webfont.woff") format("woff");
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/charter_bold_italic-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}

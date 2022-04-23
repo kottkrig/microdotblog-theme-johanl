@@ -1,0 +1,17 @@
+<header class="w-full p-6 md:px-24">
+  <nav class="flex justify-between gap-x-4">
+    <a href="{{ .Site.Home.Permalink }}">{{ .Site.Title }}</a>
+
+    <ul id="nav-menu" class="m-0 p-0 list-none">
+      {{ with .Site.GetPage "/about" }}
+      <li class="my-0 mb-2">
+        <a href="{{ .Permalink }}" class="">{{ .Title }}</a>
+      </li>
+      {{ end }} {{ range .Site.Sections }}
+      <li class="my-0 mb-2">
+        <a href="{{ .Permalink }}" class="">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>
