@@ -4,8 +4,11 @@
   <header>
     <!-- Title and Publication Date -->
     <h1 class="text-xl font-bold p-name">{{ .Title }}</h1>
-    <time class="dt-published" datetime="{{ .PublishDate }}">
-      {{ .PublishDate.Format "Monday, 2:e Jan"}}
+    <time
+      class="dt-published"
+      datetime='{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}'
+    >
+      {{ dateFormat "Monday, 2:e Jan" .PublishDate }}
     </time>
 
     <!-- 
