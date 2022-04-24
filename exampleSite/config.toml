@@ -1,5 +1,6 @@
 theme = "johanl-theme"
 languageCode = "sv-se"
+defaultContentLanguage = "sv"
 baseurl = "http://example.com/"
 title = "Hugo Tailwindcss Starter"
 
