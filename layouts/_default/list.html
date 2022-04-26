@@ -1,8 +1,24 @@
 {{ define "main" }}
-{{ range .Pages }}
-    <article class="px-6 mx-auto mb-16 prose text-gray-700 justify-self-center sm:px-4 md:px-0 lg:prose-lg">
-        <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-        {{ .Content }}
-    </article>
-{{ end }}
+  <ul id="post-list">
+    {{ if or .IsHome .Site.Params.paginate_categories }}
+      {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") }}
+      {{ $list := $paginator.Pages }}
+      {{ range $list }}
+        {{ partial "entry.html" . }}
+      {{ end }}
+    {{ else }}
+      {{ $list := where .Pages.ByDate.Reverse "Type" "post" }}
+      {{ range $list }}
+        {{ partial "entry.html" . }}
+      {{ end }}
+    {{ end }}
+  </ul>
+
+  {{ if .IsHome }}
+    {{ if .Site.Params.paginate_home }}
+      {{ partial "pagination" . }}
+    {{ end }}
+  {{ else if .Site.Params.paginate_categories }}
+    {{ partial "pagination" . }}
+  {{ end }}
 {{ end }}

@@ -6,57 +6,29 @@
       <h1 class="text-xl font-bold">{{ .Title }}</h1>
       <p class="my-4">{{ .Content }}</p>
     </div>
-
-    <ul class="list-none px-0">
-      <li class="my-2">
-        <a rel="me" href="https://twitter.com/kottkrig"
-          >@kottkrig på twitter →</a
-        >
-      </li>
-    </ul>
   </header>
 
-  <div class="h-feed">
-    {{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
-    {{ range
-      $paginator.Pages
-    }}
-      {{ partial "entry.html" . }}
+  <ul class="h-feed space-y-32 mt-16">
+    {{ if or .IsHome .Site.Params.paginate_categories }}
+      {{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
+      {{ $list := $paginator.Pages }}
+      {{ range $list }}
+        {{ partial "entry.html" . }}
+      {{ end }}
+    {{ else }}
+      {{ $list := where .Site.Pages.ByDate.Reverse "Type" "post" }}
+      {{ range $list }}
+        {{ partial "entry.html" . }}
+      {{ end }}
     {{ end }}
-  </div>
-
-  <div class="mt-6 mb-24 flex flex-col space-y-6">
-    {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
-      <div>
-        <h2 class="text-xl font-bold mb-2">{{ .Key }}</h2>
-        <ol class="list-none">
-          {{ range .Pages }}
-            <li class="my-1">
-              <a class="text-lg flex flex-row py-1" href="{{ .Permalink }}">
-                <time
-                  class="block w-24 flex-none"
-                  datetime="{{ .PublishDate }}"
-                >
-                  {{ dateFormat "Jan 2" .PublishDate }}
-                </time>
-                <div>{{ .Title }}</div>
-              </a>
-            </li>
-          {{ end }}
-        </ol>
-      </div>
-    {{ end }}
-  </div>
+  </ul>
 
   <!-- H-card that is used for IndieWeb -->
   <p style="display: none" class="h-card" rel="me">
-    <img
-      loading="lazy"
-      class="u-photo"
-      src="/assets/img/avatar-md.jpg"
-      alt="Johan Larsson"
-    />
-    <a class="p-name u-url" href="/">Johan Larsson</a>
-    <a class="u-email" href="mailto:johan@johanl.se">johan@johanl.se</a>
+    <a class="u-url" href="/about/">
+      <img id="avatar" class="u-photo" src="{{ .Site.Author.avatar }}" width="96" height="96" />
+    </a>
+    <h1 class="p-name" rel="me">{{ .Site.Author.name }}</h1>
+    <h4 class="p-role">{{ .Site.Params.description | safeHTML }}</h4>
   </p>
 {{ end }}

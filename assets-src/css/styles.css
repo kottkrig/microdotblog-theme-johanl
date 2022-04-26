@@ -10,7 +10,7 @@
     font-size: 18px;
   }
 
-  :not(nav) ul {
+  article.entry ul {
     @apply list-circle pl-6 my-2;
   }
 
@@ -31,11 +31,11 @@
     @apply my-3 relative;
   }
 
-  :not(nav) ul li {
+  article.entry ul li {
     @apply my-5;
   }
 
-  article p {
+  article.entry p {
     @apply my-3;
   }
 
@@ -51,7 +51,7 @@
     @apply text-sm mx-5;
   }
 
-  article a::after {
+  article.entry .entry-body a::after {
     content: "°";
     @apply inline text-red-800 relative;
     top: -2px;
@@ -72,6 +72,10 @@
 
   h2 {
     @apply text-lg font-bold;
+  }
+
+  .entry img {
+    @apply shadow-md bg-red-200 rounded w-full;
   }
 }
 

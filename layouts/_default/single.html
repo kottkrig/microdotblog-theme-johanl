@@ -1,29 +1,32 @@
 {{ define "main" }}
+  <article class="mb-24 h-entry entry">
+    <header>
+      <!-- Title and Publication Date -->
+      <h1 class="text-xl font-bold p-name">{{ .Title }}</h1>
+      <time
+        class="dt-published"
+        datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
+      >
+        {{ dateFormat "Monday, 2:e Jan" .PublishDate }}
+      </time>
 
-<article class="mb-24 h-entry">
-  <header>
-    <!-- Title and Publication Date -->
-    <h1 class="text-xl font-bold p-name">{{ .Title }}</h1>
-    <time
-      class="dt-published"
-      datetime='{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}'
-    >
-      {{ dateFormat "Monday, 2:e Jan" .PublishDate }}
-    </time>
-
-    <!-- 
+      <!-- 
             H-card that is used for IndieWeb 
 
             I couldn't get it to work wiht just linking to the author at the homepage. A lot of services didn't manage to follow the link and get the author from the homepage instead of on this post page.
         -->
-    <a style="display: none" href="/" class="u-author h-card">
-      <img loading="lazy" class="u-photo" src="{{ "/assets/img/avatar-md.jpg"
-      }}" alt="Johan Larsson" />
-      <span class="p-name">Johan Larsson</span>
-    </a>
-  </header>
+        
+        <!-- H-card that is used for IndieWeb -->
+        <p style="display: none" class="u-author h-card" rel="me">
+          <a class="u-url" href="/about/">
+            <img class="u-photo" src="{{ .Site.Author.avatar }}" width="96" height="96" />
+          </a>
+          <h1 class="p-name" rel="me">{{ .Site.Author.name }}</h1>
+          <h4 class="p-role">{{ .Site.Params.description | safeHTML }}</h4>
+        </p> 
+    
+    </header>
 
-  <div class="e-content">{{ .Content }}</div>
-</article>
-
+    <div class="e-content">{{ .Content }}</div>
+  </article>
 {{ end }}
