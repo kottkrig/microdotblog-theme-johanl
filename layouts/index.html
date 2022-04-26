@@ -1,50 +1,62 @@
 {{ define "main" }}
+  <header>
+    <div class="my-4 text-4xl">👋</div>
 
-<header>
-  <div class="my-4 text-4xl">👋</div>
+    <div>
+      <h1 class="text-xl font-bold">{{ .Title }}</h1>
+      <p class="my-4">{{ .Content }}</p>
+    </div>
 
-  <div>
-    <h1 class="text-xl font-bold">{{ .Title }}</h1>
-    <p class="my-4">{{ .Content }}</p>
-  </div>
-
-  <ul class="list-none px-0">
-    <li class="my-2">
-      <a rel="me" href="https://twitter.com/kottkrig">@kottkrig på twitter →</a>
-    </li>
-  </ul>
-</header>
-
-<div class="mt-6 mb-24 flex flex-col space-y-6">
-  {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
-  <div>
-    <h2 class="text-xl font-bold mb-2">{{ .Key }}</h2>
-    <ol class="list-none">
-      {{ range .Pages }}
-      <li class="my-1">
-        <a class="text-lg flex flex-row py-1" href="{{ .Permalink }}">
-          <time class="block w-24 flex-none" datetime="{{ .PublishDate }}">
-            {{ dateFormat "Jan 2" .PublishDate }}
-          </time>
-          <div>{{ .Title }}</div>
-        </a>
+    <ul class="list-none px-0">
+      <li class="my-2">
+        <a rel="me" href="https://twitter.com/kottkrig"
+          >@kottkrig på twitter →</a
+        >
       </li>
-      {{ end }}
-    </ol>
+    </ul>
+  </header>
+
+  <div class="h-feed">
+    {{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
+    {{ range
+      $paginator.Pages
+    }}
+      {{ partial "entry.html" . }}
+    {{ end }}
   </div>
-  {{ end }}
-</div>
 
-<!-- H-card that is used for IndieWeb -->
-<p style="display: none" class="h-card" rel="me">
-  <img
-    loading="lazy"
-    class="u-photo"
-    src="/assets/img/avatar-md.jpg"
-    alt="Johan Larsson"
-  />
-  <a class="p-name u-url" href="/">Johan Larsson</a>
-  <a class="u-email" href="mailto:johan@johanl.se">johan@johanl.se</a>
-</p>
+  <div class="mt-6 mb-24 flex flex-col space-y-6">
+    {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
+      <div>
+        <h2 class="text-xl font-bold mb-2">{{ .Key }}</h2>
+        <ol class="list-none">
+          {{ range .Pages }}
+            <li class="my-1">
+              <a class="text-lg flex flex-row py-1" href="{{ .Permalink }}">
+                <time
+                  class="block w-24 flex-none"
+                  datetime="{{ .PublishDate }}"
+                >
+                  {{ dateFormat "Jan 2" .PublishDate }}
+                </time>
+                <div>{{ .Title }}</div>
+              </a>
+            </li>
+          {{ end }}
+        </ol>
+      </div>
+    {{ end }}
+  </div>
 
+  <!-- H-card that is used for IndieWeb -->
+  <p style="display: none" class="h-card" rel="me">
+    <img
+      loading="lazy"
+      class="u-photo"
+      src="/assets/img/avatar-md.jpg"
+      alt="Johan Larsson"
+    />
+    <a class="p-name u-url" href="/">Johan Larsson</a>
+    <a class="u-email" href="mailto:johan@johanl.se">johan@johanl.se</a>
+  </p>
 {{ end }}
