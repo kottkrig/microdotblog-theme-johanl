@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  {{ partial "head.html" . }}
+  <body class="font-serif leading-snug">
+    {{- partial "dev-size-indicator.html" . -}}
+    {{- partial "header.html" . -}}
+    <main class="w-full p-6 md:px-24 flex flex-wrap gap-4 md:gap-2 lg:gap-4">
+      {{- $list := where .Site.Pages ".Params.photos" "!=" nil -}}
+      {{- $len := (len $list) -}}
+      {{ range $index, $value := $list }}
+        <a
+          href="{{ .Permalink }}"
+          class="block md:h-[40vh] w-auto grow relative scroll-my-16"
+        >
+          {{ range first 1 .Params.photos }}
+            <img
+              src="{{ . }}"
+              class="shadow-xs rounded w-full md:w-auto md:h-full min-w-full min-h-full object-cover"
+              loading="lazy"
+            />
+          {{ end }}
+        </a>
+      {{ end }}
+    </main>
+    {{- partial "dev-parameters.html" . -}}
+    {{- partial "footer.html" . -}}
+  </body>
+</html>
