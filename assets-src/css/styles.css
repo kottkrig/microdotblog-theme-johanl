@@ -8,6 +8,7 @@
 @layer base {
   body {
     font-size: 18px;
+    @apply font-serif leading-snug bg-white text-black dark:bg-slate-900 dark:text-white;
   }
 
   article.entry ul {
@@ -59,7 +60,7 @@
   }
 
   a:hover {
-    @apply bg-red-100 rounded-sm;
+    @apply bg-red-100 rounded-sm dark:bg-slate-600;
   }
 
   article figure {
