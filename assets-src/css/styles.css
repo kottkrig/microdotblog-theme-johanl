@@ -75,7 +75,7 @@
   }
 
   .entry img {
-    @apply shadow-md bg-red-200 rounded w-full;
+    @apply shadow-md rounded w-full;
   }
 }
 
