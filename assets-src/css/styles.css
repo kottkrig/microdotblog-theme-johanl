@@ -81,11 +81,11 @@
 }
 
 .microblog_conversation {
-  @apply font-sans mt-24 flex flex-col gap-y-12;
+  @apply font-sans text-sm mt-24 flex flex-col gap-y-12;
 }
 
 .microblog_conversation .microblog_user {
-  @apply flex gap-x-4;
+  @apply flex gap-x-2;
 }
 
 .microblog_conversation .microblog_user microblog_fullname {
