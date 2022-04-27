@@ -54,7 +54,7 @@
 
   article.entry .entry-body a::after {
     content: "°";
-    @apply inline text-red-800 relative;
+    @apply inline text-red-800 dark:text-red-500 relative;
     top: -2px;
     margin-left: 1.5px;
   }
