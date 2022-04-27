@@ -80,6 +80,22 @@
   }
 }
 
+.microblog_conversation {
+  @apply font-sans mt-24 flex flex-col gap-y-12;
+}
+
+.microblog_conversation .microblog_user {
+  @apply flex gap-x-4;
+}
+
+.microblog_conversation .microblog_user microblog_fullname {
+  @apply block;
+}
+
+.microblog_conversation .microblog_user microblog_fullname::after {
+  content: ":";
+}
+
 @font-face {
   font-family: "Charter";
   src: url("/fonts/charter_regular-webfont.woff") format("woff");
