@@ -13,7 +13,7 @@
 
   </header>
 
-  <ul class="h-feed space-y-32 mt-24 pt-24 md:mt-32 md:pt-32 border-t">
+  <ul class="h-feed space-y-32 mt-24 pt-24 md:mt-32 md:pt-32 border-t dark:border-slate-700">
     {{ if or .IsHome .Site.Params.paginate_categories }}
       {{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
       {{ $list := $paginator.Pages }}
