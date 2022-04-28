@@ -52,6 +52,7 @@
     @apply text-sm mx-5;
   }
 
+  main > header a::after,
   article.entry .entry-body a::after {
     content: "°";
     @apply inline text-red-800 dark:text-red-500 relative;
