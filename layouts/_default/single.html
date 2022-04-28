@@ -7,7 +7,7 @@
         class="dt-published"
         datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
       >
-        {{ dateFormat "Monday, 2:e Jan" .PublishDate }}
+        {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
       </time>
 
       <!-- 
