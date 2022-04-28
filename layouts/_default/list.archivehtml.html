@@ -1,10 +1,9 @@
 {{ define "main" }}
-  {{ $list := where .Pages.ByDate.Reverse "Type" "post" }}
-  {{ range $list.GroupByPublishDate "2006" }}
+  {{ range .Pages.GroupByPublishDate "2006" }}
     <div>
       <h2 class="text-xl font-bold mb-2">{{ .Key }}</h2>
       <ol class="list-none">
-        {{ range .Pages }}
+        {{ range .Pages.ByDate.Reverse "Type" "post" }}
           <li class="my-1">
             <a class="text-lg flex flex-row py-1" href="{{ .Permalink }}">
               <time class="block w-24 flex-none" datetime="{{ .PublishDate }}">
