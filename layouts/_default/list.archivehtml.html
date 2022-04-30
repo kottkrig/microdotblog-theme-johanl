@@ -1,19 +1,37 @@
 {{ define "main" }}
-  {{ range .Pages.GroupByPublishDate "2006" }}
-    <div>
-      <h2 class="text-xl font-bold mb-2">{{ .Key }}</h2>
-      <ol class="list-none">
-        {{ range .Pages.ByDate.Reverse "Type" "post" }}
-          <li class="my-1">
-            <a class="text-lg flex flex-row py-1" href="{{ .Permalink }}">
-              <time class="block w-24 flex-none" datetime="{{ .PublishDate }}">
-                {{ dateFormat "Jan 2" .PublishDate }}
-              </time>
-              <div>{{ .Title }}</div>
-            </a>
-          </li>
-        {{ end }}
-      </ol>
-    </div>
-  {{ end }}
+  <div class="space-y-32">
+    {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
+      {{ if ne .Key "0001" }}
+        <div>
+          <h2 class="font-bold">{{ .Key }}</h2>
+          <div class="space-y-16">
+            {{ range .Pages.GroupByDate "January" }}
+              <div>
+                <h3 class="font-bold">{{ .Key }}</h3>
+
+                <ul class="space-y-4">
+                  {{ range where .Pages "Type" "post" }}
+                    {{ if eq .Kind "page" }}
+                      <li>
+                        {{ if .Title }}
+                          <a href="{{ .Permalink }}"
+                            >{{ .Title | markdownify }}</a
+                          >
+                        {{ else }}
+                          <a href="{{ .Permalink }}"
+                            >{{ .Summary | truncate 100 }}</a
+                          >
+                        {{ end }}
+                      </li>
+                    {{ end }}
+
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
 {{ end }}
