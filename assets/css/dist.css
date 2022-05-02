@@ -1053,6 +1053,24 @@ h2 {
   content: ":";
 }
 
+div.highlight pre {
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  div.highlight pre {
+    border-width: 1px;
+  }
+
+  div.highlight pre {
+    --tw-border-opacity: 1;
+    border-color: rgb(71 85 105 / var(--tw-border-opacity));
+  }
+}
+
 @font-face {
   font-family: "Charter";
 

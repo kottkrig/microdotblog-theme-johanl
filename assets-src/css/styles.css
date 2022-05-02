@@ -101,6 +101,10 @@
   content: ":";
 }
 
+div.highlight pre {
+  @apply p-2 rounded text-sm dark:border dark:border-slate-600;
+}
+
 @font-face {
   font-family: "Charter";
   src: url("/fonts/charter_regular-webfont.woff") format("woff");
