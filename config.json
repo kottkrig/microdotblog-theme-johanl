@@ -80,6 +80,10 @@
       "renderer": {
         "unsafe": true
       }
+    },
+    "highlight": {
+      "style": "dracula",
+      "tabWidth": 2
     }
   },
   "enableRobotsTXT": true,
