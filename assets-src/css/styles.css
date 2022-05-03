@@ -49,7 +49,7 @@
   }
 
   article blockquote {
-    @apply text-sm mx-5;
+    @apply pl-4 pr-14 border-l dark:border-slate-600;
   }
 
   main > header a::after,

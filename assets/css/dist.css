@@ -506,10 +506,16 @@ article.entry .entry-body h2 + p {
 }
 
 article blockquote {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  border-left-width: 1px;
+  padding-left: 1rem;
+  padding-right: 3.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  article blockquote {
+    --tw-border-opacity: 1;
+    border-color: rgb(71 85 105 / var(--tw-border-opacity));
+  }
 }
 
 main > header a::after,
