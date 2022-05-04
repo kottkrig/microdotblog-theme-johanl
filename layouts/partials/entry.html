@@ -17,15 +17,17 @@
 
       <section class="e-content entry-body">{{ .Content }}</section>
     {{ else }}
-      <a href="{{ .Permalink }}" class="u-url">
-        <time
-          class="dt-published"
-          datetime="{{ .Date.Format "2006-01-02T15:04:05.000-07:00" }}"
-          itemprop="datePublished"
-        >
-          {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
-        </time>
-      </a>
+      <h2 class="font-bold">
+        <a href="{{ .Permalink }}" class="u-url">
+          <time
+            class="dt-published"
+            datetime="{{ .Date.Format "2006-01-02T15:04:05.000-07:00" }}"
+            itemprop="datePublished"
+          >
+            {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
+          </time>
+        </a>
+      </h2>
 
       <section class="e-content entry-body">{{ .Content }}</section>
     {{ end }}
