@@ -102,7 +102,7 @@
 }
 
 div.highlight pre {
-  @apply p-2 rounded text-sm dark:border dark:border-slate-600;
+  @apply p-2 rounded text-sm dark:border dark:border-slate-600 overflow-x-auto;
 }
 
 @font-face {
