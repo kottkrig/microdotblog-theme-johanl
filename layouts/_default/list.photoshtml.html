@@ -10,7 +10,7 @@
       {{ range $index, $value := $list }}
         <a
           href="{{ .Permalink }}"
-          class="block md:h-[40vh] w-auto grow relative scroll-my-16"
+          class="block md:h-[40vh] w-auto grow relative"
         >
           {{ range first 1 .Params.photos }}
             <img
