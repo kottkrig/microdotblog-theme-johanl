@@ -1,0 +1,60 @@
+<li>
+  <article class="h-entry entry">
+    {{ if .Title }}
+      <h2 class="text-xl font-bold p-name">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h2>
+
+      <h3>
+        Svar till <img src="{{ .Params.reply_to_avatar }}" />
+        {{ if eq .Params.reply_to_hostname "micro.blog" }}
+          <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to"
+            >@{{ .Params.reply_to_username }}</a
+          >
+        {{ else }}
+          <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to"
+            >{{ .Params.reply_to_hostname }}</a
+          >
+        {{ end }}
+      </h3>
+
+      <a href="{{ .Permalink }}" class="u-url">
+        <time
+          class="dt-published"
+          datetime="{{ .Date.Format "2006-01-02T15:04:05.000-07:00" }}"
+          itemprop="datePublished"
+        >
+          {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
+        </time>
+      </a>
+    {{ else }}
+      <h2 class="font-bold flex gap-x-2">
+        <div>Svar till</div>
+        <div class="flex gap-x-2">
+          <img
+            src="{{ .Params.reply_to_avatar }}"
+            class="block max-w-[20px]"
+            width="20"
+            height="20"
+          />
+          <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to block"
+            >{{ .Params.reply_to_username }}@{{ .Params.reply_to_hostname }}</a
+          >
+        </div>
+      </h2>
+
+      <a href="{{ .Permalink }}" class="u-url">
+        <time
+          class="dt-published"
+          datetime="{{ .Date.Format "2006-01-02T15:04:05.000-07:00" }}"
+          itemprop="datePublished"
+        >
+          {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
+        </time>
+      </a>
+    {{ end }}
+
+
+    <section class="e-content entry-body">{{ .Content }}</section>
+  </article>
+</li>

@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <ul class="space-y-32">
+    {{ if .Site.Params.paginate_replies }}
+      {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "reply") }}
+      {{ $list := $paginator.Pages }}
+      {{ range $list }}
+        {{ partial "entry.html" . }}
+      {{ end }}
+    {{ else }}
+      {{ $list := where .Pages.ByDate.Reverse "Type" "reply" }}
+      {{ range $list }}
+        {{ partial "entry.html" . }}
+      {{ end }}
+    {{ end }}
+  </ul>
+
+  {{ if .IsHome }}
+    {{ if .Site.Params.paginate_home }}
+      {{ partial "pagination" . }}
+    {{ end }}
+  {{ else if .Site.Params.paginate_categories }}
+    {{ partial "pagination" . }}
+  {{ end }}
+{{ end }}
