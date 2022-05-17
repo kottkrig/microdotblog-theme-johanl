@@ -505,6 +505,11 @@ article.entry .entry-body h2 + p {
   margin-top: 0.25rem;
 }
 
+article.entry .entry-body p > code {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 article blockquote {
   border-left-width: 1px;
   padding-left: 1rem;

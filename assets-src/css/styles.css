@@ -48,6 +48,10 @@
     @apply mt-1;
   }
 
+  article.entry .entry-body p > code {
+    @apply text-sm;
+  }
+
   article blockquote {
     @apply pl-4 pr-14 border-l dark:border-slate-600;
   }
