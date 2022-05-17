@@ -43,7 +43,11 @@
             height="20"
           />
           <div>
-            {{ .Params.reply_to_username }}@{{ .Params.reply_to_hostname }}
+            {{ if in .Params.reply_to_username .Params.reply_to_hostname }}
+              {{ .Params.reply_to_username }}
+            {{ else }}
+              {{ .Params.reply_to_username }}@{{ .Params.reply_to_hostname }}
+            {{ end }}
           </div>
         </a>
       </h2>
