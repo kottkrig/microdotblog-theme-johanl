@@ -5,17 +5,19 @@
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       </h2>
 
-      <h3>
-        Svar till <img src="{{ .Params.reply_to_avatar }}" />
-        {{ if eq .Params.reply_to_hostname "micro.blog" }}
-          <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to"
-            >@{{ .Params.reply_to_username }}</a
+      <h3 class="flex gap-x-2">
+        <div>Svar till</div>
+        <div class="flex gap-x-1 items-center">
+          <img
+            src="{{ .Params.reply_to_avatar }}"
+            class="block max-w-[20px]"
+            width="20"
+            height="20"
+          />
+          <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to block"
+            >{{ .Params.reply_to_username }}@{{ .Params.reply_to_hostname }}</a
           >
-        {{ else }}
-          <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to"
-            >{{ .Params.reply_to_hostname }}</a
-          >
-        {{ end }}
+        </div>
       </h3>
 
       <a href="{{ .Permalink }}" class="u-url">
@@ -28,19 +30,22 @@
         </time>
       </a>
     {{ else }}
-      <h2 class="font-bold flex gap-x-2">
+      <h2 class="flex gap-x-2">
         <div>Svar till</div>
-        <div class="flex gap-x-2">
+        <a
+          href="{{ .Params.reply_to_url }}"
+          class="u-in-reply-to flex gap-x-1 items-center"
+        >
           <img
             src="{{ .Params.reply_to_avatar }}"
-            class="block max-w-[20px]"
+            class="block max-w-[20px] max-h-[20px]"
             width="20"
             height="20"
           />
-          <a href="{{ .Params.reply_to_url }}" class="u-in-reply-to block"
-            >{{ .Params.reply_to_username }}@{{ .Params.reply_to_hostname }}</a
-          >
-        </div>
+          <div>
+            {{ .Params.reply_to_username }}@{{ .Params.reply_to_hostname }}
+          </div>
+        </a>
       </h2>
 
       <a href="{{ .Permalink }}" class="u-url">

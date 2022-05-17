@@ -702,6 +702,10 @@ h2 {
   height: 2rem;
 }
 
+.max-h-\[20px\] {
+  max-height: 20px;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -774,6 +778,11 @@ h2 {
 .gap-x-2 {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
+}
+
+.gap-x-1 {
+  -moz-column-gap: 0.25rem;
+       column-gap: 0.25rem;
 }
 
 .space-y-32 > :not([hidden]) ~ :not([hidden]) {
