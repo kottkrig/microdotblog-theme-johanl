@@ -12,9 +12,11 @@
           href="{{ .Permalink }}"
           class="block md:h-[40vh] w-auto grow relative"
         >
-          {{ range first 1 .Params.photos }}
+          {{ range first 1 .Params.photos_with_metadata }}
             <img
-              src="{{ . }}"
+              src="{{ .url }}"
+              width="{{ .width }}"
+              height="{{ .height }}"
               class="shadow-xs rounded w-full md:w-auto md:h-full min-w-full min-h-full object-cover"
               loading="lazy"
             />
