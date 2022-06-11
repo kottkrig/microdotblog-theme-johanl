@@ -87,7 +87,7 @@
     }
   },
   "enableRobotsTXT": true,
-  "languageCode": "[LANGUAGE]",
+  "languageCode": "sv",
   "defaultContentLanguage": "sv",
   "paginate": 25,
   "params": {
