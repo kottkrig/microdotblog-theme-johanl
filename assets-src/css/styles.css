@@ -56,16 +56,16 @@
     @apply pl-4 pr-14 border-l dark:border-slate-600;
   }
 
-  main > header a::after,
+  /* main > header a::after,
   article.entry .entry-body a::after {
     content: "°";
     @apply inline text-red-800 dark:text-red-500 relative;
     top: -2px;
     margin-left: 1.5px;
-  }
+  } */
 
-  a {
-    @apply decoration-red-800 dark:decoration-red-500 decoration-wavy decoration-1 underline-offset-2;
+  article.entry .entry-body a {
+    @apply underline decoration-red-800 dark:decoration-red-500 decoration-wavy decoration-1 underline-offset-[5px];
   }
 
   a:hover {
