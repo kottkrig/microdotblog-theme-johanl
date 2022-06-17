@@ -545,6 +545,22 @@ main > header a::after,
   margin-left: 1.5px;
 }
 
+a {
+  -webkit-text-decoration-color: #991b1b;
+          text-decoration-color: #991b1b;
+  -webkit-text-decoration-style: wavy;
+          text-decoration-style: wavy;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    -webkit-text-decoration-color: #ef4444;
+            text-decoration-color: #ef4444;
+  }
+}
+
 a:hover {
   border-radius: 0.125rem;
   --tw-bg-opacity: 1;

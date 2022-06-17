@@ -64,6 +64,10 @@
     margin-left: 1.5px;
   }
 
+  a {
+    @apply decoration-red-800 dark:decoration-red-500 decoration-wavy decoration-1 underline-offset-2;
+  }
+
   a:hover {
     @apply bg-red-100 rounded-sm dark:bg-slate-600;
   }
