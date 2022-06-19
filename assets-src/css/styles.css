@@ -84,6 +84,7 @@
     @apply text-lg font-bold;
   }
 
+  .photos-grid__item img,
   .entry img {
     @apply shadow-md rounded w-full;
   }
