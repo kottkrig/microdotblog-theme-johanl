@@ -9,5 +9,9 @@
     </main>
     {{- partial "dev-parameters.html" . -}}
     {{- partial "footer.html" . -}}
+
+    {{ range .Site.Params.plugins_js }}
+      <script src="{{ . }}"></script>
+    {{ end }}
   </body>
 </html>

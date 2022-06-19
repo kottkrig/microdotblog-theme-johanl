@@ -83,4 +83,11 @@
       integrity="{{ $styles.Data.Integrity }}"
     />
   {{ end -}}
+
+  {{ range .Site.Params.plugins_css }}
+    <link rel="stylesheet" href="{{ . }}" />
+  {{ end }}
+  {{ range $filename := .Site.Params.plugins_html }}
+    {{ partial $filename $ }}
+  {{ end }}
 </head>
