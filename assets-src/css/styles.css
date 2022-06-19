@@ -85,8 +85,12 @@
   }
 
   .photos-grid__item img,
-  .entry img {
+  .entry img:not(.screenshot) {
     @apply shadow-md rounded w-full;
+  }
+
+  .entry img.screenshot {
+    @apply w-full;
   }
 
   .entry-body img:first-child {
