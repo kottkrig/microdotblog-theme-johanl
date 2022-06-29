@@ -24,7 +24,7 @@
     content: counter(ol-counter);
     left: -2rem;
     top: 0.2rem;
-    @apply text-sm border border-solid rounded-full border-black w-5 h-5 p-1 flex items-center justify-center absolute;
+    @apply text-sm border border-solid rounded-full border-black dark:border-white w-5 h-5 p-1 flex items-center justify-center absolute;
   }
 
   article ol li {

@@ -480,6 +480,13 @@ article ol li::before {
   line-height: 1.25rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  article ol li::before {
+    --tw-border-opacity: 1;
+    border-color: rgb(255 255 255 / var(--tw-border-opacity));
+  }
+}
+
 article ol li {
   counter-increment: ol-counter;
   position: relative;
