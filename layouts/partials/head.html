@@ -90,4 +90,7 @@
   {{ range $filename := .Site.Params.plugins_html }}
     {{ partial $filename $ }}
   {{ end }}
+
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
 </head>
