@@ -499,7 +499,7 @@ article.entry ul li {
   margin-bottom: 1.25rem;
 }
 
-article.entry p {
+article.entry p, article.entry p > img {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }

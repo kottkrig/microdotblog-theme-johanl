@@ -36,7 +36,8 @@
     @apply my-5;
   }
 
-  article.entry p {
+  article.entry p,
+  article.entry p > img {
     @apply my-3;
   }
 
