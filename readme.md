@@ -10,7 +10,7 @@ The theme used for [my little corner of the internet](https://www.johanl.se).
 
 ## Deployment
 
-Currently, Micro.blog doesn't support PostCSS when deploying themes. This means that we have to build and distribute our css files on each update.
+Currently, Micro.blog doesn't support PostCSS when deploying themes. This means that we have to build and distribute our css files on each update. Ideally, we won't have to do that in the future.
 
 ```
 npm run build:css
