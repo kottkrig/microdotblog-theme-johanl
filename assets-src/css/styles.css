@@ -7,7 +7,7 @@
 
 @layer base {
   body {
-    font-size: 18px;
+    font-size: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
     @apply font-serif leading-snug bg-white text-black dark:bg-slate-900 dark:text-white;
   }
 
