@@ -49,7 +49,7 @@
     @apply mt-1;
   }
 
-  article.entry .entry-body p > code {
+  article.entry .entry-body :not(.highlight) code {
     @apply text-sm;
   }
 

@@ -512,7 +512,7 @@ article.entry .entry-body h2 + p {
   margin-top: 0.25rem;
 }
 
-article.entry .entry-body p > code {
+article.entry .entry-body :not(.highlight) code {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
