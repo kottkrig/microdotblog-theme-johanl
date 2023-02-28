@@ -1,7 +1,7 @@
 {{ define "main" }}
   <header>
     <div class="my-4 text-4xl">👋</div>
-    
+
     <div>
       <h1 class="text-xl font-bold">Hej, jag heter Johan.</h1>
       <p class="my-4">
@@ -10,10 +10,11 @@
         <a href="https://funkismultimedia.se">Funkis Multimedia</a>.
       </p>
     </div>
-
   </header>
 
-  <ul class="h-feed space-y-32 mt-24 pt-24 md:mt-32 md:pt-32 border-t dark:border-slate-700">
+  <ul
+    class="h-feed space-y-32 mt-24 pt-24 md:mt-32 md:pt-32 border-t dark:border-slate-700"
+  >
     {{ if or .IsHome .Site.Params.paginate_categories }}
       {{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
       {{ $list := $paginator.Pages }}
@@ -29,11 +30,17 @@
   </ul>
 
   <!-- H-card that is used for IndieWeb -->
-  <p style="display: none" class="h-card" rel="me">
+  <div style="display: none" class="h-card" rel="me">
     <a class="u-url" href="/about/">
-      <img id="avatar" class="u-photo" src="{{ .Site.Author.avatar }}" width="96" height="96" />
+      <img
+        id="avatar"
+        class="u-photo"
+        src="{{ .Site.Author.avatar }}"
+        width="96"
+        height="96"
+      />
     </a>
     <h1 class="p-name" rel="me">{{ .Site.Author.name }}</h1>
     <h4 class="p-role">{{ .Site.Params.description | safeHTML }}</h4>
-  </p>
+  </div>
 {{ end }}
