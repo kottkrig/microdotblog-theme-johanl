@@ -1,0 +1,52 @@
+{{ define "main" }}
+  <article class="mb-24 h-entry entry">
+    <header>
+      <!-- Title and Publication Date -->
+      {{ if .Title }}
+        <h1 class="text-xl font-bold p-name">{{ .Title }}</h1>
+        <time
+          class="dt-published"
+          datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
+        >
+          {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
+        </time>
+      {{ else }}
+        <h1 class="font-bold p-name">
+          <time
+            class="dt-published"
+            datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
+          >
+            {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
+          </time>
+        </h1>
+      {{ end }}
+
+
+      <!-- 
+            H-card that is used for IndieWeb 
+
+            I couldn't get it to work wiht just linking to the author at the homepage. A lot of services didn't manage to follow the link and get the author from the homepage instead of on this post page.
+        -->
+
+      <p style="display: none" class="u-author h-card" rel="me">
+        <a class="u-url" href="/about/">
+          <img
+            class="u-photo"
+            src="{{ .Site.Author.avatar }}"
+            width="96"
+            height="96"
+          />
+        </a>
+
+        <span class="p-name" rel="me">{{ .Site.Author.name }}</span>
+        <span class="p-role">{{ .Site.Params.description | safeHTML }}</span>
+      </p>
+    </header>
+
+    <div class="e-content entry-body">{{ .Content }}</div>
+
+    {{ if .Site.Params.include_conversation }}
+      <script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
+    {{ end }}
+  </article>
+{{ end }}
