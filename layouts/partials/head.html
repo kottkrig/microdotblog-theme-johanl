@@ -71,9 +71,9 @@
 
   <!-- Preload our fonts so that they are fetched even before 
   the browser has parsed the css that is declaring them. -->
-  <link rel="preload" href="fonts/charter_regular-webfont.woff" as="font" />
-  <link rel="preload" href="fonts/charter_bold-webfont.woff" as="font" />
-  <link rel="preload" href="fonts/charter_italic-webfont.woff" as="font" />
+  <link rel="preload" href="/fonts/charter_regular-webfont.woff" as="font" />
+  <link rel="preload" href="/fonts/charter_bold-webfont.woff" as="font" />
+  <link rel="preload" href="/fonts/charter_italic-webfont.woff" as="font" />
 
   {{ hugo.Generator }}
   {{- $styles := resources.Get "css/dist.css" -}}
