@@ -97,6 +97,13 @@
   {{ range .Site.Params.plugins_css }}
     <link rel="stylesheet" href="{{ . }}" />
   {{ end }}
+  
+  {{- if isset .Site.Params "customcss" }}
+    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}{{ .Site.Params.customCSS }}" />
+  {{ end }}
+  
+  <link rel="stylesheet" type="text/css" href="{{ "custom.css" | relURL }}?{{ .Site.Params.theme_seconds }}" />
+  
   {{ range $filename := .Site.Params.plugins_html }}
     {{ partial $filename $ }}
   {{ end }}

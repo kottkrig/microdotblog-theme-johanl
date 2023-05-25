@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <div class="space-y-32">
+  <div class="space-y-32 h-feed">
     {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
       {{ if ne .Key "0001" }}
         <div class="space-y-2">
@@ -12,13 +12,13 @@
                 <ul class="space-y-4">
                   {{ range where .Pages "Type" "post" }}
                     {{ if eq .Kind "page" }}
-                      <li>
+                      <li class="h-entry e-content">
                         {{ if .Title }}
-                          <a href="{{ .Permalink }}"
+                          <a class="u-url p-name" href="{{ .Permalink }}"
                             >{{ .Title | markdownify }}</a
                           >
                         {{ else }}
-                          <a href="{{ .Permalink }}"
+                          <a class="u-url p-summary" href="{{ .Permalink }}"
                             >{{ .Summary | truncate 100 }}</a
                           >
                         {{ end }}
