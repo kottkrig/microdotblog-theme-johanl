@@ -1,8 +1,8 @@
 <li>
   <article class="h-entry entry">
     {{ if .Title }}
-      <h2 class="text-xl font-bold p-name">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <h2 class="text-xl font-bold">
+        <a class="p-name" href="{{ .RelPermalink }}">{{ .Title }}</a>
       </h2>
 
       <a href="{{ .Permalink }}" class="u-url">
