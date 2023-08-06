@@ -682,6 +682,10 @@ h2 {
   margin-top: 6rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mb-24 {
   margin-bottom: 6rem;
 }
@@ -696,6 +700,10 @@ h2 {
 
 .mr-8 {
   margin-right: 2rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .block {
@@ -839,6 +847,10 @@ h2 {
   white-space: nowrap;
 }
 
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -905,12 +917,28 @@ h2 {
   padding-right: 0.5rem;
 }
 
+.pl-8 {
+  padding-left: 2rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
+}
+
 .text-left {
   text-align: left;
 }
 
 .text-right {
   text-align: right;
+}
+
+.indent-\[-2rem\] {
+  text-indent: -2rem;
+}
+
+.indent-\[-1rem\] {
+  text-indent: -1rem;
 }
 
 .text-4xl {
