@@ -7,7 +7,7 @@
       {{ if .IsHome }}
         {{ .Site.Title }}
       {{ else }}
-        {{ .Site.Title }} -
+        {{ .Site.Title }} –
         {{ .Title }}
       {{ end }}
     {{ end }}
@@ -21,53 +21,12 @@
   />
   <link rel="canonical" href="{{ .Permalink }}" />
 
-  {{ if .RSSLink -}}
-    <link
-      href="{{ .RSSLink }}"
-      rel="alternate"
-      type="application/rss+xml"
-      title="{{ .Site.Title }}"
-    />
-    <link
-      href="{{ "podcast.xml" | absURL }}"
-      rel="alternate"
-      type="application/rss+xml"
-      title="Podcast"
-    />
-    <link
-      rel="alternate"
-      type="application/json"
-      title="{{ .Site.Title }}"
-      href="{{ "feed.json" | absURL }}"
-    />
-    <link
-      rel="EditURI"
-      type="application/rsd+xml"
-      href="{{ "rsd.xml" | absURL }}"
-    />
-  {{ end -}}
+  {{ partial "microblog_head.html" . }}
 
   {{- if .Params.Author }}
     <meta name="author" content="{{ .Params.Author }}" />
   {{ end -}}
 
-
-  <link rel="me" href="https://micro.blog/{{ .Site.Author.username }}" />
-  {{ with .Site.Params.twitter_username }}
-    <link rel="me" href="https://twitter.com/{{ . }}" />
-  {{ end }}
-  {{ with .Site.Params.github_username }}
-    <link rel="me" href="https://github.com/{{ . }}" />
-  {{ end }}
-  {{ with .Site.Params.instagram_username }}
-    <link rel="me" href="https://instagram.com/{{ . }}" />
-  {{ end }}
-  <link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
-  <link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
-  <link rel="micropub" href="https://micro.blog/micropub" />
-  <link rel="microsub" href="https://micro.blog/microsub" />
-  <link rel="webmention" href="https://micro.blog/webmention" />
-  <link rel="subscribe" href="https://micro.blog/users/follow" />
 
   <!-- Preload our fonts so that they are fetched even before 
   the browser has parsed the css that is declaring them. -->
@@ -94,20 +53,23 @@
     />
   {{ end -}}
 
-  {{ range .Site.Params.plugins_css }}
-    <link rel="stylesheet" href="{{ . }}" />
-  {{ end }}
-  
   {{- if isset .Site.Params "customcss" }}
-    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}{{ .Site.Params.customCSS }}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ .Site.BaseURL }}{{ .Site.Params.customCSS }}"
+    />
   {{ end }}
-  
-  <link rel="stylesheet" type="text/css" href="{{ "custom.css" | relURL }}?{{ .Site.Params.theme_seconds }}" />
-  
-  {{ range $filename := .Site.Params.plugins_html }}
-    {{ partial $filename $ }}
-  {{ end }}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ "custom.css" |
+      relURL
+    }}?{{ .Site.Params.theme_seconds }}"
+  />
 
-  {{ template "_internal/opengraph.html" . }}
+  {{ template
+    "_internal/opengraph.html" .
+  }}
   {{ template "_internal/twitter_cards.html" . }}
 </head>
