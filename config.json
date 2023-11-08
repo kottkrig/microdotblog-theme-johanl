@@ -71,14 +71,12 @@
     "fractions": false
   },
   "markup": {
-    "goldmark": {
-      "renderer": {
-        "unsafe": true
-      }
-    }
+    "goldmark": { "renderer": { "unsafe": true } },
+    "highlight": { "style": "dracula", "tabWidth": 2 }
   },
   "enableRobotsTXT": true,
   "languageCode": "sv",
+  "defaultContentLanguage": "sv",
   "paginate": 25,
   "params": {
     "description": "Follow <a href=\"https://micro.blog/[USERNAME]\">@[USERNAME] on Micro.blog</a>.",
