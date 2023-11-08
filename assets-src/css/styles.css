@@ -41,11 +41,17 @@
     @apply my-3;
   }
 
-  article.entry .entry-body h2 {
+  article.entry .entry-body h2,
+  article.entry .entry-body h3 {
     @apply mt-5;
   }
 
-  article.entry .entry-body h2 + p {
+  article.entry .entry-body h2 + h3 {
+    @apply mt-1;
+  }
+
+  article.entry .entry-body h2 + p,
+  article.entry .entry-body h3 + p {
     @apply mt-1;
   }
 
@@ -83,6 +89,10 @@
 
   h2 {
     @apply text-lg font-bold;
+  }
+
+  h3 {
+    @apply text-base font-bold;
   }
 
   .photos-grid__item img,
