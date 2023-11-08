@@ -1,16 +1,16 @@
 {{ define "main" }}
-  <div class="space-y-16 h-feed">
+  <div class="h-feed archive-group-list">
     <h1>Tidigare, på Ditt & Datt:</h1>
     {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
       {{ if ne .Key "0001" }}
           {{ range .Pages.GroupByDate "January 2006" }}
-            <div class="space-y-4">
-              <h3 class="font-bold">{{ humanize .Key }}</h3>
+            <div>
+              <h3 class="archive-group-heading">{{ humanize .Key }}</h3>
 
-              <ul class="space-y-4">
+              <ul class="archive-post-list">
                 {{ range where .Pages "Type" "post" }}
                   {{ if eq .Kind "page" }}
-                    <li class="h-entry e-content pl-4 indent-[-1rem]">
+                    <li class="h-entry e-content archive-post">
                       <a href="{{ .Permalink }}" class="u-url">
                         {{ if .Title }}
                           <strong class="p-name">{{ .Title | markdownify }}</strong>
@@ -18,7 +18,7 @@
                           <span class="u-url p-summary">{{ .Summary | truncate 300 }}</span>
                         {{ end }}
                         
-                        <small class="ml-4 whitespace-nowrap"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">
+                        <small><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">
                           {{ humanize (dateFormat "Monday, 2 Jan 2006" .PublishDate) }}
                         </time></small>
                       </a>

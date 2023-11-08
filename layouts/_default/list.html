@@ -1,24 +1,42 @@
 {{ define "main" }}
-  <ul class="space-y-32 h-feed">
-    {{ if or .IsHome .Site.Params.paginate_categories }}
-      {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") }}
-      {{ $list := $paginator.Pages }}
-      {{ range $list }}
-        {{ partial "entry.html" . }}
-      {{ end }}
-    {{ else }}
-      {{ $list := where .Pages.ByDate.Reverse "Type" "post" }}
-      {{ range $list }}
-        {{ partial "entry.html" . }}
-      {{ end }}
-    {{ end }}
-  </ul>
 
-  {{ if .IsHome }}
-    {{ if .Site.Params.paginate_home }}
-      {{ partial "pagination" . }}
+<h1>OH SO COOL!</h1>
+
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+
+<div class="h-feed">
+  {{ range .Pages }}
+  {{ $paginator := .Paginate (where .Pages.ByDate.Reverse
+  "Type" "post") }} 
+  {{ range .Paginator.Pages }}
+  <div
+    class="post-preview h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}"
+  >
+    <a href="{{ .Permalink }}" class="post-date u-url"> </a>
+    {{ if .Title }}
+    <h2 class="post-title p-name">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h2>
+
+    <div class="p-summary">
+      {{ .Summary | safeHTML }} {{ if .Truncated }}
+      <p>
+        <a class="read-more" href="{{ .Permalink }}"
+          >{{ .Site.Params.read_more_text | safeHTML }}</a
+        >
+      </p>
+      {{ end }}
+    </div>
+    {{ else }}
+    <div class="e-content">{{ .Content }}</div>
+    {{ end }} {{ else }}
+    <div class="e-content">{{ .Content }}</div>
     {{ end }}
-  {{ else if .Site.Params.paginate_categories }}
-    {{ partial "pagination" . }}
+  </div>
   {{ end }}
-{{ end }}
+
+  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+  {{ .Summary }} {{ end }}
+</div>
+

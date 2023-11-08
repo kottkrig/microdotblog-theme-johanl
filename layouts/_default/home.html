@@ -1,0 +1,33 @@
+{{ define "main" }}
+
+  {{ if .IsHome }}
+  <header class="home-header">
+    <div class="emoji">👋</div>
+
+    <div>
+      <h1>Hej, jag heter Johan.</h1>
+      <p class="text-balance">
+        Jag bygger webbsidor, appar och allsköns digitala ting.
+        <br />Just nu gör jag det hos
+        <a href="https://funkismultimedia.se">Funkis Multimedia</a>.
+      </p>
+    </div>
+  </header>
+  {{ end }}
+
+
+
+<div class="h-feed">
+    <div role="main">
+      <div class="post-list">
+        {{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
+        {{ range .Paginator.Pages }}
+        {{ partial "entry.html" . }}
+        {{ end }}
+      </div>
+    </div>
+</div>
+
+{{- template "_internal/pagination.html" . -}}
+
+{{ end }}
