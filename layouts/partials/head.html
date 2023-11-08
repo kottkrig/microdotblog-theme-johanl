@@ -1,75 +1,15 @@
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 
-  <title>
-    {{ block "title" . }}
-      {{ if .IsHome }}
-        {{ .Site.Title }}
-      {{ else }}
-        {{ .Site.Title }} –
-        {{ .Title }}
-      {{ end }}
-    {{ end }}
-  </title>
+<!-- Preload our fonts so that they are fetched even before 
+the browser has parsed the css that is declaring them. -->
+<link rel="preload" href="/fonts/charter_regular-webfont.woff" as="font" />
+<link rel="preload" href="/fonts/charter_bold-webfont.woff" as="font" />
+<link rel="preload" href="/fonts/charter_italic-webfont.woff" as="font" />
 
-  <meta name="description" content="{{ .Summary }}" />
-  <link
-    rel="shortcut icon"
-    href="https://micro.blog/{{ .Site.Author.username }}/favicon.png"
-    type="image/x-icon"
-  />
-  <link rel="canonical" href="{{ .Permalink }}" />
+{{ partial "microblog_head.html" . }}
 
-  {{ partial "microblog_head.html" . }}
+{{ partialCached "head/css.html" . }}
+{{ partialCached "head/js.html" . }}
 
-  {{- if .Params.Author }}
-    <meta name="author" content="{{ .Params.Author }}" />
-  {{ end -}}
-
-
-  <!-- Preload our fonts so that they are fetched even before 
-  the browser has parsed the css that is declaring them. -->
-  <link rel="preload" href="/fonts/charter_regular-webfont.woff" as="font" />
-  <link rel="preload" href="/fonts/charter_bold-webfont.woff" as="font" />
-  <link rel="preload" href="/fonts/charter_italic-webfont.woff" as="font" />
-
-  {{ hugo.Generator }}
-  {{- $styles := resources.Get "css/dist.css" -}}
-  {{- if
-    .Site.IsServer
-  }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
-  {{ else }}
-    {{- $styles := $styles| minify | fingerprint -}}
-
-
-    <!-- Preload the css file so that it is cached more aggressively by the browser. -->
-    <link rel="preload" href="{{ $styles.RelPermalink }}" as="style" />
-    <link
-      rel="stylesheet"
-      href="{{ $styles.Permalink }}"
-      integrity="{{ $styles.Data.Integrity }}"
-    />
-  {{ end -}}
-
-  {{- if isset .Site.Params "customcss" }}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ .Site.BaseURL }}{{ .Site.Params.customCSS }}"
-    />
-  {{ end }}
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="{{ "custom.css" |
-      relURL
-    }}?{{ .Site.Params.theme_seconds }}"
-  />
-
-  {{ template
-    "_internal/opengraph.html" .
-  }}
-  {{ template "_internal/twitter_cards.html" . }}
-</head>

@@ -1,9 +1,29 @@
 {{ define "main" }}
-<article class="mb-24 h-entry entry">
+<article class="h-entry entry">
   <header>
-    <!-- Title and Publication Date -->
-    {{ if .Title }}
-    <h1 class="text-xl font-bold p-name">{{ .Title }}</h1>
+    
+    {{ if eq .Type "post" }}
+      <!-- Posts should display dates -->
+      {{ if .Title }}
+        <h1 class="p-name"><a class="u-url" href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <time
+          class="dt-published"
+          datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
+        >
+          {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
+        </time>
+      {{ else }}
+        <h1>
+          <time
+            class="dt-published"
+            datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
+          >
+            <a class="u-url" href="{{ .RelPermalink }}">{{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}</a>
+          </time>
+        </h1>
+      {{ end }}
+    {{ else if .Title }}
+      <h1 class="p-name">{{ .Title }}</h1>
     {{ end }}
 
     <!-- 

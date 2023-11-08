@@ -1,15 +1,31 @@
-# theme.toml template for a Hugo theme
-# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+name = 'Theme name'
+license = 'MIT'
+licenselink = 'https://github.com/owner/repo/LICENSE'
+description = 'Theme description'
 
-name = "hugo-theme-tailwindcss-starter"
-license = "MIT"
-licenselink = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter/blob/main/LICENSE"
-description = "A boilerplate starter theme using Tailwind CSS."
-homepage = "https://github.com/dirkolbrich/hugo-theme-tailwindcss-starter"
-tags = ["Hugo", "Tailwind CSS", "theme", "starter", "boilerplate"]
-features = []
-min_version = "0.69"
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/owner/repo'
 
+# If you have a running demo of the theme
+demosite = 'https://owner.github.io/repo'
+
+# Taxonomy terms
+tags = ['blog', 'company']
+features = ['some', 'awesome', 'features']
+
+# If the theme has multiple authors
+authors = [
+  {name = 'Name of author', homepage = 'Website of author'},
+  {name = 'Name of author', homepage = 'Website of author'}
+]
+
+# If the theme has a single author
 [author]
-  name = "Dirk Olbrich"
-  homepage = "https://github.com/dirkolbrich/"
+  name = 'Your name'
+  homepage = 'Your website'
+
+# If porting an existing theme
+[original]
+  author = 'Name of original author'
+  homepage = 'Website of original author'
+  repo = 'https://github.com/owner/repo'

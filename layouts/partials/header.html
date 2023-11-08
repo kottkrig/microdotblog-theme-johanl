@@ -1,20 +1,7 @@
-<header class="w-full p-6 md:px-24">
-  <nav class="flex justify-between gap-x-4 flex-wrap">
-    {{ if not .IsHome }}
-      <a class="block" href="{{ .Site.Home.Permalink }}">{{ .Site.Title }}</a>
-    {{ end }}
+{{ if not .IsHome }}
+  <h1><a href="{{ .Site.Home.Permalink }}">{{ .Site.Title }}</a></h1>
+{{ else }}
+  <div></div>
+{{ end }}
 
-
-    <ul id="nav-menu" class="m-0 p-0 list-none flex grow justify-end gap-4">
-      {{ range .Site.Menus.main }}
-        <li class="font-bold">
-          {{ if .Page.Params.redirect }}
-            <a href="{{ .Page.Params.redirect }}">{{ .Name }}</a>
-          {{ else }}
-            <a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a>
-          {{ end }}
-        </li>
-      {{ end }}
-    </ul>
-  </nav>
-</header>
+{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
