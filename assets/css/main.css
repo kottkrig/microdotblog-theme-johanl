@@ -34,11 +34,13 @@
   --link-hover-background: rgb(254 226 226);
 
   --divider: rgb(229, 231, 235);
+  
+  --content-column-max-width: 50ch;
 
   --spacing-sm: 1rem;
   --spacing-md: 4rem;
   --spacing-lg: 8rem;
-  --spacing-gutter: 1ch;
+  --spacing-gutter: 2ch;
 
   --shadow-color: 0deg 0% 65%;
   --shadow-elevation-low: 0.3px 0.5px 0.6px hsl(var(--shadow-color) / 0.44),
@@ -79,6 +81,7 @@
 
 html {
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 *,
@@ -97,6 +100,7 @@ body {
   line-height: 1.375;
 
   padding-top: 0.5lh;
+  margin: 0;
 }
 
 .site-header {
@@ -128,7 +132,8 @@ body {
   display: flex;
   gap: 1ch;
   justify-content: space-between;
-  max-width: 50ch;
+  width: 100%;
+  max-width: var(--content-column-max-width);
 }
 
 .pagination .disabled,
@@ -138,7 +143,7 @@ body {
 }
 
 .pagination a {
-  padding: 1rem;
+  padding: 1em;
 }
 
 ul {
@@ -156,12 +161,13 @@ footer {
 
 main {
   width: 100%;
-  padding: 1.5rem var(--spacing-gutter);
+  padding: 1.5em var(--spacing-gutter);
 }
 
 .archive-post,
 article {
-  max-width: 50ch;
+  width: 100%;
+  max-width: var(--content-column-max-width);
 }
 
 a {
@@ -171,7 +177,7 @@ a {
 
 a:hover {
   background-color: var(--link-hover-background);
-  border-radius: 0.125rem;
+  border-radius: 0.125em;
 }
 
 img,
@@ -221,7 +227,7 @@ Home:
 .home-header {
   padding-bottom: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
-  max-width: 50ch;
+  max-width: var(--content-column-max-width);
   border-bottom: 1px solid var(--divider);
 }
 
@@ -272,10 +278,10 @@ img:not(.screenshot) {
 }
 
 .entry-body ul {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   list-style-type: circle;
-  padding-left: 1.5rem;
+  padding-left: 1.5em;
 }
 .entry-body ul li {
   list-style-type: circle;
