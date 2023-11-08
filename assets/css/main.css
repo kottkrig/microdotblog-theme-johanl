@@ -130,8 +130,6 @@ body {
 .pagination {
   margin-top: var(--spacing-lg);
   display: flex;
-  gap: 1ch;
-  justify-content: space-between;
   width: 100%;
   max-width: var(--content-column-max-width);
 }
@@ -142,8 +140,22 @@ body {
   pointer-events: none;
 }
 
+.pagination .page-item:first-child a {
+  border-top-left-radius: 0.2em;
+  border-bottom-left-radius: 0.2em;
+}
+
+.pagination .page-item:last-child a {
+  border-top-right-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
+}
+
 .pagination a {
-  padding: 1em;
+  padding: 0.5em 0.8em;
+  display: block;
+  margin-inline-start: -1px;
+  border: 1px solid var(--divider);
+  
 }
 
 ul {
