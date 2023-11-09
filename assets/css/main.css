@@ -103,6 +103,10 @@ body {
   margin: 0;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .site-header {
   padding: 0 var(--spacing-gutter);
   display: flex;

@@ -1,7 +1,4 @@
-{{ if not .IsHome }}
-  <h1><a href="{{ .Site.Home.Permalink }}">{{ .Site.Title }}</a></h1>
-{{ else }}
-  <div></div>
-{{ end }}
+<h1><a href="{{ .Site.Home.Permalink }}" {{ if .IsHome }} class="hidden" {{ end }}>{{ .Site.Title }}</a></h1>
+
 
 {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
