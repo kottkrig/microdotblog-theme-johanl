@@ -118,6 +118,7 @@ body {
 
 .site-header h1 {
   flex-shrink: 0;
+  line-height: 1.25em;
 }
 
 .site-header nav ul {
