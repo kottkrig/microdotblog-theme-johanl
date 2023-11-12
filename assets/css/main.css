@@ -58,6 +58,10 @@
     9.6px 19.2px 20.9px -2.5px hsl(var(--shadow-color) / 0.28),
     15.2px 30.4px 33.1px -3px hsl(var(--shadow-color) / 0.25),
     23px 46px 50.1px -3.5px hsl(var(--shadow-color) / 0.22);
+    
+  --font-sans: system-ui, sans-serif;
+  --font-serif: Charter, ui-serif, Georgia, Cambria, Times New Roman, Times,
+  serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -95,8 +99,7 @@ body {
   background: var(--background);
   font-size: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 
-  font-family: Charter, ui-serif, Georgia, Cambria, Times New Roman, Times,
-    serif;
+  font-family: var(--font-serif);
   line-height: 1.375;
 
   padding-top: 0.5lh;
@@ -276,6 +279,10 @@ Entries:
   text-decoration-thickness: 1px;
 }
 
+.entry-body img {
+  display: block;
+}
+
 img:not(.screenshot) {
   width: 100%;
   border-radius: 0.25rem;
@@ -348,6 +355,10 @@ img:not(.screenshot) {
   font-size: 0.875rem;
 }
 
+.entry-body img + img {
+  margin-top: 1lh;
+}
+
 /**
 
 Archive:
@@ -378,4 +389,41 @@ Archive:
 .archive-post time {
   margin-left: var(--spacing-sm);
   white-space: nowrap;
+}
+
+/**
+
+Micro.blog conversations:
+
+**/
+
+.microblog_conversation {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  font-family: var(--font-sans);
+  font-size: 0.875em;
+  line-height: 1.25em;
+}
+
+.microblog_conversation .microblog_user {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.microblog_conversation .microblog_user microblog_fullname {
+  display: block;
+}
+
+.microblog_conversation .microblog_user microblog_fullname::after {
+  content: ":";
+}
+
+.microblog_conversation .microblog_time {
+  font-size: 0.7em;
+}
+
+img.microblog_avatar {
+  box-shadow: var(--shadow-elevation-low);
 }
