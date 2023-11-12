@@ -77,6 +77,18 @@
   }
 }
 
+@media (color-gamut: p3) {
+  :root {
+    --accent: color(display-p3 0.78 0.109 0.066)
+  }
+}
+
+@media (color-gamut: p3) and (prefers-color-scheme: dark) {
+  :root {
+    --accent: color(display-p3 0.965 0.234 0.203);
+  }
+}
+
 @media (min-width: 768px) {
   :root {
     --spacing-gutter: 6rem;
