@@ -295,7 +295,8 @@ Entries:
   display: block;
 }
 
-img:not(.screenshot) {
+img:not(.screenshot),
+video {
   width: 100%;
   border-radius: 0.25rem;
   box-shadow: var(--shadow-elevation-medium);
