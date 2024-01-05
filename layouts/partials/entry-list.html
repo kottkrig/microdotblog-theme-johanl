@@ -1,0 +1,14 @@
+
+<div class="h-feed">
+  <div role="main">
+    <div class="post-list">
+      {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") }}
+      {{ $list := $paginator.Pages }}
+      {{ range $list  }}
+        {{ partial "entry.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+{{- template "_internal/pagination.html" . -}}

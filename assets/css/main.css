@@ -244,7 +244,8 @@ article header h1 {
   font-size: 1.25em;
 }
 
-article h1 ~ time {
+article h1 ~ time,
+article h1 ~ a time {
   display: block;
   font-style: italic;
   margin-bottom: 1lh;
