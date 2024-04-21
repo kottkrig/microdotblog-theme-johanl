@@ -1,35 +1,53 @@
 {{ define "main" }}
-  <div class="h-feed archive-group-list">
+  <div class="archive-group-list">
+    
     <h1>Tidigare, på Ditt & Datt:</h1>
-    {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
-      {{ if ne .Key "0001" }}
-          {{ range .Pages.GroupByDate "January 2006" }}
-            <div>
-              <h3 class="archive-group-heading">{{ humanize .Key }}</h3>
-
-              <ul class="archive-post-list">
-                {{ range where .Pages "Type" "post" }}
-                  {{ if eq .Kind "page" }}
-                    <li class="h-entry e-content archive-post">
-                      <a href="{{ .Permalink }}" class="u-url">
-                        {{ if .Title }}
-                          <strong class="p-name">{{ .Title | markdownify }}</strong>
-                        {{ else }}
-                          <span class="u-url p-summary">{{ .Summary | truncate 300 }}</span>
-                        {{ end }}
-                        
-                        <small><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">
-                          {{ humanize (dateFormat "Monday, 2 Jan 2006" .PublishDate) }}
-                        </time></small>
-                      </a>
-                    </li>
-                  {{ end }}
-
-                {{ end }}
-              </ul>
-            </div>
-          {{ end }}
-      {{ end }}
+    
+    {{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+    {{ if gt (len $list) 0 }}
+    <div class="archive-categories">
+      <h2>Kategorier</h2>
+          <div>
+            {{ $sortedList := sort $list "Title" }}
+            {{ $length := len $sortedList }}
+            {{ range $index, $element := $sortedList }}
+                <a href="{{ $element.Permalink }}">{{ $element.Title }}</a>{{ if lt $index (sub $length 1) }}, {{ end }}
+            {{ end }}
+          </div>
+    </div>
     {{ end }}
+    
+    <div class="h-feed archive-group-list">
+      {{ range .Site.RegularPages.GroupByPublishDate "2006" }}
+        {{ if ne .Key "0001" }}
+            {{ range .Pages.GroupByDate "January 2006" }}
+              <div>
+                <h3 class="archive-group-heading">{{ humanize .Key }}</h3>
+  
+                <ul class="archive-post-list">
+                  {{ range where .Pages "Type" "post" }}
+                    {{ if eq .Kind "page" }}
+                      <li class="h-entry e-content archive-post">
+                        <a href="{{ .Permalink }}" class="u-url">
+                          {{ if .Title }}
+                            <strong class="p-name">{{ .Title | markdownify }}</strong>
+                          {{ else }}
+                            <span class="u-url p-summary">{{ .Summary | truncate 300 }}</span>
+                          {{ end }}
+                          
+                          <small><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">
+                            {{ humanize (dateFormat "Monday, 2 Jan 2006" .PublishDate) }}
+                          </time></small>
+                        </a>
+                      </li>
+                    {{ end }}
+  
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
   </div>
 {{ end }}

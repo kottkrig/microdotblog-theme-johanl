@@ -385,6 +385,10 @@ Archive:
 
 **/
 
+.archive-categories a {
+  text-decoration: underline;
+}
+
 .archive-group-list {
   display: flex;
   flex-direction: column;
