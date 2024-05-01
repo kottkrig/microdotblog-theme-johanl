@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+  <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Summary | plainify | truncate 40 | safeHTML }} | {{ .Site.Title }}{{ end }}{{ end }}</title>
+
 
 <!-- Preload our fonts so that they are fetched even before 
 the browser has parsed the css that is declaring them. -->
@@ -13,3 +14,4 @@ the browser has parsed the css that is declaring them. -->
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
 
+{{ partial "head/og.html" . }}
