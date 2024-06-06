@@ -34,7 +34,7 @@
   --link-hover-background: rgb(254 226 226);
 
   --divider: rgb(229, 231, 235);
-  
+
   --content-column-max-width: 50ch;
 
   --spacing-sm: 1rem;
@@ -58,7 +58,7 @@
     9.6px 19.2px 20.9px -2.5px hsl(var(--shadow-color) / 0.28),
     15.2px 30.4px 33.1px -3px hsl(var(--shadow-color) / 0.25),
     23px 46px 50.1px -3.5px hsl(var(--shadow-color) / 0.22);
-    
+
   --font-sans: system-ui, sans-serif;
   --font-serif: Charter, ui-serif, Georgia, Cambria, Times New Roman, Times,
   serif;
@@ -175,7 +175,7 @@ body {
   display: block;
   margin-inline-start: -1px;
   border: 1px solid var(--divider);
-  
+
 }
 
 ul {
@@ -227,7 +227,7 @@ h4,
 h5 {
   font-weight: 700;
   font-size: 1.125em;
-  line-height: 1.75em;
+  line-height: 1.25em;
   margin: 0;
   padding: 0;
   text-wrap: balance;
@@ -289,7 +289,8 @@ Entries:
 
 **/
 
-.entry-body a {
+.entry-body a,
+.microblog_conversation a {
   color: var(--text);
   text-decoration: underline;
   text-decoration-style: wavy;
