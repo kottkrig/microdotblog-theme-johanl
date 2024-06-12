@@ -1,5 +1,5 @@
 {{ if eq (now.Format "2006") (.PublishDate.Format "2006") }}
 	{{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
 {{ else }}
-	{{ humanize (dateFormat "Monday, 2 Jan, 2006" .PublishDate) }}
+	{{ humanize (dateFormat "Monday, 2 Jan 2006" .PublishDate) }}
 {{ end }}
