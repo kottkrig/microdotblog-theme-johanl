@@ -1,7 +1,7 @@
 {{ define "main" }}
 <article class="h-entry entry">
   <header>
-    
+
     {{ if eq .Type "post" }}
       <!-- Posts should display dates -->
       {{ if .Title }}
@@ -10,7 +10,7 @@
           class="dt-published"
           datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
         >
-          {{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}
+          {{ partial "date.html" . }}
         </time>
       {{ else }}
         <h1>
@@ -18,7 +18,7 @@
             class="dt-published"
             datetime="{{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}"
           >
-            <a class="u-url" href="{{ .RelPermalink }}">{{ humanize (dateFormat "Monday, 2 Jan" .PublishDate) }}</a>
+            <a class="u-url" href="{{ .RelPermalink }}">{{ partial "date.html" . }}</a>
           </time>
         </h1>
       {{ end }}
@@ -26,8 +26,8 @@
       <h1 class="p-name">{{ .Title }}</h1>
     {{ end }}
 
-    <!-- 
-            H-card that is used for IndieWeb 
+    <!--
+            H-card that is used for IndieWeb
 
             I couldn't get it to work wiht just linking to the author at the homepage. A lot of services didn't manage to follow the link and get the author from the homepage instead of on this post page.
         -->
