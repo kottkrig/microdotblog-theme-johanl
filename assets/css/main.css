@@ -390,6 +390,7 @@ Archive:
   text-decoration: underline;
 }
 
+.stack-lg,
 .archive-group-list {
   display: flex;
   flex-direction: column;

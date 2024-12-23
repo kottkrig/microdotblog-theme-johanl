@@ -1,5 +1,21 @@
 {{ define "main" }}
 
-{{ partial "entry-list.html" . }}
+<div class="stack-lg">
+  {{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+  {{ if gt (len $list) 0 }}
+  <div class="archive-categories">
+    <h2>Kategorier</h2>
+        <div>
+          {{ $sortedList := sort $list "Title" }}
+          {{ $length := len $sortedList }}
+          {{ range $index, $element := $sortedList }}
+              <a href="{{ $element.Permalink }}">{{ $element.Title }}</a>{{ if lt $index (sub $length 1) }}, {{ end }}
+          {{ end }}
+        </div>
+  </div>
+  {{ end }}
+  
+  {{ partial "entry-list.html" . }}
+</div>
 
 {{ end }}
