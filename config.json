@@ -77,7 +77,9 @@
   "enableRobotsTXT": true,
   "languageCode": "sv",
   "defaultContentLanguage": "sv",
-  "paginate": 25,
+  "pagination": {
+    "pagerSize": 25
+  },
   "params": {
     "description": "Follow <a href=\"https://micro.blog/[USERNAME]\">@[USERNAME] on Micro.blog</a>.",
     "itunes_description": "[ITUNES_DESCRIPTION]",
