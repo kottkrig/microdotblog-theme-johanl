@@ -298,7 +298,7 @@ Entries:
 
 .entry-body a,
 .microblog_conversation a {
-  color: var(--text);
+  color: inherit;
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: var(--accent);
