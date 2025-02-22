@@ -1,5 +1,5 @@
 {{ define "main" }}
-<article class="h-entry entry">
+<article class="h-entry entry" {{ if .Title }} style="view-transition-name: post-{{ urlize .Title }};" {{ end }}>
   <header>
 
     {{ if eq .Type "post" }}

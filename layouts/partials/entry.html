@@ -1,4 +1,4 @@
-<article class="h-entry entry">
+<article class="h-entry entry" {{ if .Title }} style="view-transition-name: post-{{ urlize .Title }};" {{ end }}>
   {{ if .Title }}
     <header>
       <h1>
