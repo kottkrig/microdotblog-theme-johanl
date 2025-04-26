@@ -300,6 +300,10 @@ Entries:
 
 **/
 
+.entry-body p {
+  text-wrap: pretty;
+}
+
 .entry-body a,
 .microblog_conversation a {
   color: inherit;
