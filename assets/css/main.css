@@ -402,6 +402,48 @@ video {
   padding: 0 1.5ch;
 }
 
+.entry-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1lh 0;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  border-top: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+}
+
+.entry-body table caption {
+  caption-side: top;
+  font-size: 0.9rem;
+  font-weight: normal;
+  text-align: left;
+  color: currentcolor;
+  opacity: 0.7;
+}
+
+.entry-body thead {
+  border-bottom: 1px solid currentcolor;
+}
+
+.entry-body th,
+.entry-body td {
+  text-align: left;
+  padding-top: 0.5lh;
+  padding-bottom: 0.5lh;
+  padding-left: 0;
+  padding-right: 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.entry-body th {
+  font-weight: bold;
+}
+
+.entry-body tr:last-child td {
+  border-bottom: none;
+}
+
+
 /**
 
 Archive:
